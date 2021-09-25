@@ -177,31 +177,30 @@ def handle_spells(spells, wiz):
 
 # Returns the spell to be cast
 def get_spell(cast, wiz):
-    match cast:
-        case "JKL":
-            stat = get_stat("hp")
-            spellcast = spell("Heal", stat, wiz.x + wiz.width, wiz.y + wiz.height//2)
-            return spellcast
-        case "JLK":
-            stat = get_stat("hp") / 2
-            spellcast = spell("Cosmic Drain", stat, wiz.x + wiz.width, wiz.y + wiz.height//2)
-            return spellcast
-        case "KJL":
-            stat = get_stat("ap") * 1.2
-            spellcast = spell("Sonic Blast", stat, wiz.x + wiz.width, wiz.y + wiz.height//2)
-            return spellcast
-        case "KLJ":
-            stat = get_stat("ap") * 2
-            spellcast = spell("Fire Ball", stat, wiz.x + wiz.width, wiz.y + wiz.height//2)
-            return spellcast
-        case "LJK":
-            stat = get_stat("df")
-            spellcast = spell("Shield", stat, wiz.x + wiz.width, wiz.y + wiz.height//2)
-            return spellcast
-        case "LKJ":
-            stat = get_stat("df") * 25
-            spellcast = spell("Thorns", stat, wiz.x + wiz.width, wiz.y + wiz.height//2)
-            return spellcast
+    if cast == "JKL":
+        stat = get_stat("hp")
+        spellcast = spell("Heal", stat, wiz.x + wiz.width, wiz.y + wiz.height//2)
+        return spellcast
+    elif cast == "JLK":
+        stat = get_stat("hp") / 2
+        spellcast = spell("Cosmic Drain", stat, wiz.x + wiz.width, wiz.y + wiz.height//2)
+        return spellcast
+    elif cast == "KJL":
+        stat = get_stat("ap") * 1.2
+        spellcast = spell("Sonic Blast", stat, wiz.x + wiz.width, wiz.y + wiz.height//2)
+        return spellcast
+    elif cast == "KLJ":
+        stat = get_stat("ap") * 2
+        spellcast = spell("Fire Ball", stat, wiz.x + wiz.width, wiz.y + wiz.height//2)
+        return spellcast
+    elif cast == "LJK":
+        stat = get_stat("df")
+        spellcast = spell("Shield", stat, wiz.x + wiz.width, wiz.y + wiz.height//2)
+        return spellcast
+    elif cast == "LKJ":
+        stat = get_stat("df") * 25
+        spellcast = spell("Thorns", stat, wiz.x + wiz.width, wiz.y + wiz.height//2)
+        return spellcast
 
 def main():
     wiz = pygame.Rect(WIDTH / 2, HEIGHT / 2, WIZARDWidth, WIZARDHeight)
