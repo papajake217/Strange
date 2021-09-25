@@ -4,7 +4,7 @@ import os
 pygame.init()
 pygame.font.init()
 
-fontSize = 60
+fontSize = 30
 myfont = pygame.font.SysFont('Calibri', fontSize,True)
 
 
@@ -13,6 +13,9 @@ health = 10
 ability_power = 10
 defense = 10
 
+#Spell Stack
+top = -1
+spellStack = []
 
 #Window size
 WIDTH = 1366
@@ -70,17 +73,18 @@ def draw_window(wiz,gob,missiles,spells):
     pygame.draw.rect(WINDOW,(0,0,0),BORDERTHREE)
     pygame.draw.rect(WINDOW,(0,0,0),BORDERFOUR)
     pygame.draw.rect(WINDOW,(0,0,0),pygame.Rect(WIDTH/5 * 2,HEIGHT-40,WIDTH/5,40))
+    pygame.draw.rect(WINDOW,(255,255,255),pygame.Rect(550,732,265,30))
     WINDOW.blit(WIZARD,(wiz.x,wiz.y))
     WINDOW.blit(GOBLIN,(gob.x,gob.y))
-    textsurface = myfont.render('STACK: ' + ''.join(spellStack), False, (0, 0, 0))
-    WINDOW.blit(textsurface,(fontSize,HEIGHT-fontSize))
+    textsurface = myfont.render('KEYS: ' + ''.join(spellStack), False, (0, 0, 0))
+    WINDOW.blit(textsurface,(fontSize,HEIGHT-fontSize-20))
 
 
 
     if(len(spellStack) == 3):
         spellString = get_spell(''.join(spellStack),wiz).name
         spellText = myfont.render(spellString,False,(0,0,0))
-        WINDOW.blit(spellText,(200,200))
+        WINDOW.blit(spellText,(550,732))
     
     
     for shot in missiles:
@@ -93,8 +97,7 @@ def draw_window(wiz,gob,missiles,spells):
 
 
 
-top = -1
-spellStack = []
+
 
 
 
