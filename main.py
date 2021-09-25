@@ -121,6 +121,17 @@ def controls(keys_pressed,wiz,top):
         spellStack.append('l')
 
        
+# Goblin moves towards player location
+def enemy_movement(wiz, gob):
+    follow_x = wiz.x + (WIZARDWidth/2)
+    follow_y = wiz.y + (WIZARDHeight/2)
+    goblin_x = gob.x
+    goblin_y = gob.y
+
+    dx , dy = (follow_x - goblin_x, follow_y - goblin_y)
+    stepx, stepy = (dx/60., dy/60.)
+    gob.x += stepx
+    gob.y += stepy
 
 
 
@@ -163,6 +174,7 @@ def main():
                 missiles.append(missile)    
                 spellStack.clear()
 
+        enemy_movement(wiz, gob)        
         keys_pressed = pygame.key.get_pressed()
         controls(keys_pressed,wiz,top)
         handle_missiles(missiles,wiz,gob)
