@@ -86,6 +86,7 @@ class spells():
     def cast(self):
         spellsOut.append(self)
 
+# Returns the stat to be used in spell calculation
 def get_stat(type):
     x = 0
     y = 0
@@ -108,6 +109,15 @@ def get_stat(type):
         z = .025
         df = (defense * x) + (health * y) + (ability_power * z)
         return df
+
+# Updates the stat of the arg
+def add_skill_point(type):
+    if type == "hp":
+        ++health
+    elif type == "ap":
+        ++ability_power
+    elif type == "df":
+        ++defense
 
 # WASD controls for the wizard
 def controls(keys_pressed, wiz, top):
