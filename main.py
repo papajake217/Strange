@@ -74,6 +74,17 @@ def controls(keys_pressed, wiz):
     if keys_pressed[pygame.K_d] and wiz.x + SPEED + wiz.width < WIDTH:
         wiz.x += SPEED
 
+# WASD controls for the wizard
+def controls(keys_pressed, wiz):
+    if keys_pressed[pygame.K_w] and wiz.y - SPEED > 0:
+        wiz.y -= SPEED
+    if keys_pressed[pygame.K_s] and wiz.y + SPEED + wiz.height < HEIGHT:
+        wiz.y += SPEED
+    if keys_pressed[pygame.K_a] and wiz.x - SPEED > 0:
+        wiz.x -= SPEED
+    if keys_pressed[pygame.K_d] and wiz.x + SPEED + wiz.width < WIDTH:
+        wiz.x += SPEED
+        
 
 def handle_missiles(missiles, wiz, gob):
     for shots in missiles:
@@ -113,7 +124,8 @@ def main():
             if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE and len(missiles) < MAXINPUTS:
                 missile = pygame.Rect(wiz.x + wiz.width, wiz.y + wiz.height // 2, 10, 5)
                 missiles.append(missile)
-
+                
+        enemy_movement(wiz, gob)
         keys_pressed = pygame.key.get_pressed()
         controls(keys_pressed, wiz)
         handle_missiles(missiles, wiz, gob)
